@@ -1,15 +1,20 @@
 package com.example.demo.service;
 
+import com.example.demo.config.UserConfig;
 import com.example.demo.model.UserModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserParser {
+
     private final ObjectMapper objectMapper;
+
 
     public UserParser(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
@@ -26,6 +31,8 @@ public class UserParser {
     public List<UserModel> parse(List<String> list) throws JsonProcessingException {
 
 
+
+
         String fileContent = "{\n" +
                 "\"name\":\"hey\",\n" +
                 "\"surname\":\"hey\",\n" +
@@ -33,6 +40,7 @@ public class UserParser {
                 "}";
 
         UserModel userModel = objectMapper.readValue(fileContent, UserModel.class);
+
         return List.of(userModel);
 
     }

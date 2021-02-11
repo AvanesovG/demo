@@ -1,9 +1,19 @@
 package com.example.demo.model;
 
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class UserModel {
+    @Size(min = 4, max = 30)
+    @NotEmpty(message = "{name.notemty}")
     String name;
+    @Size(max = 50)
+    @NotEmpty(message = "{surname.notemty}")
     String surname;
+    @Email
+    @NotEmpty(message = "{email.notempty}")
     String email;
 
     public UserModel() {
@@ -41,7 +51,7 @@ public class UserModel {
 
     @Override
     public String toString() {
-        return "UserModel{" +
+        return "{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
