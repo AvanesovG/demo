@@ -1,28 +1,46 @@
 package com.example.demo.model;
 
 
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "user_model")
 public class UserModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @Size(min = 4, max = 30)
     @NotEmpty(message = "{name.notemty}")
-    String name;
+    @Column(name = "name")
+    private String name;
     @Size(max = 50)
     @NotEmpty(message = "{surname.notemty}")
-    String surname;
+    @Column(name = "surname")
+    private String surname;
     @Email
     @NotEmpty(message = "{email.notempty}")
-    String email;
+    @Column(name = "email")
+    private String email;
 
     public UserModel() {
     }
+
 
     public UserModel(String name, String surname, String email) {
         this.name = name;
         this.surname = surname;
         this.email = email;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
