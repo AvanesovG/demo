@@ -28,6 +28,7 @@ public class UserValidator {
             Set<ConstraintViolation<UserModel>> violations = validator.validate(model);
             for (ConstraintViolation<UserModel> violation : violations) {
                 log.error(violation.getMessage());
+
             }
 
         }

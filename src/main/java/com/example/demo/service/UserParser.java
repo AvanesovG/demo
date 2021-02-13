@@ -34,7 +34,7 @@ public class UserParser {
 
 
         String fileContent = "{\n" +
-                "\"name\":\"hey\",\n" +
+                "\"name\":\"heffy\",\n" +
                 "\"surname\":\"hey\",\n" +
                 "\"email\":\"hello@mail.ru\"\n" +
                 "}";
