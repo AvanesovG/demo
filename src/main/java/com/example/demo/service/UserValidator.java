@@ -31,18 +31,17 @@ public class UserValidator {
     }
 
 
-    public void validate(List<UserModel> list) {
+    public List< UserModel> validate(List<UserModel> list) {
+        List<UserModel>userModel = new ArrayList<>();
         for (UserModel model : list) {
             Set<ConstraintViolation<UserModel>> violations = validator.validate(model);
             if (violations.size() == 0)
-                models .add( model);
+                  userModel .add( model);
             for (ConstraintViolation<UserModel> violation : violations) {
                 log.error(violation.getMessage());
             }
-
-
         }
-
+return userModel;
     }
 }
-//}
+

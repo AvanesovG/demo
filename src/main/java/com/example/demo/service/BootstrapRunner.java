@@ -15,21 +15,21 @@ public class BootstrapRunner implements CommandLineRunner {
 
     private final UserParser userParser;
     private final UserValidator userValidator;
-    private final UserService userService;
+    private final UserSava userSava;
 
-    public BootstrapRunner(UserParser userParser, UserValidator userValidator, UserService userService) {
+    public BootstrapRunner(UserParser userParser, UserValidator userValidator, UserSava userSava) {
 
         this.userParser = userParser;
         this.userValidator = userValidator;
 
-        this.userService = userService;
+        this.userSava = userSava;
     }
 
     @Override
     public void run(String... args) throws Exception {
         List<UserModel> list = userParser.parse(paths);
-        userValidator.validate(list);
-        userService.addDatabase(userValidator.getModels());
+        List<UserModel> userModel = userValidator.validate(list);
+        userSava.addDatabase(userModel);
 
 
     }
