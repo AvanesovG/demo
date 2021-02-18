@@ -28,7 +28,7 @@ public class BootstrapRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         List<UserModel> list = userParser.parse(paths);
-        List<UserModel> userModel = userValidator.validate(list);
+        List<UserModel>userModel = userValidator.validate(list);
         userSava.addDatabase(userModel);
 
 

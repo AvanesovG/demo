@@ -15,13 +15,11 @@ import java.util.Set;
 
 @Service
 public class UserValidator {
+    private  UserModel userModel;
 
-    List<UserModel>models = new ArrayList<>();
+
     private final Logger log = LoggerFactory.getLogger(UserValidator.class);
 
-    public List<UserModel> getModels() {
-        return models;
-    }
 
     private final Validator validator;
 
@@ -31,17 +29,17 @@ public class UserValidator {
     }
 
 
-    public List< UserModel> validate(List<UserModel> list) {
-        List<UserModel>userModel = new ArrayList<>();
+    public List<UserModel> validate(List<UserModel> list) {
+List<UserModel>modelList = new ArrayList<>();
         for (UserModel model : list) {
             Set<ConstraintViolation<UserModel>> violations = validator.validate(model);
             if (violations.size() == 0)
-                  userModel .add( model);
+               modelList.add(model);
             for (ConstraintViolation<UserModel> violation : violations) {
                 log.error(violation.getMessage());
+
             }
         }
-return userModel;
+        return modelList;
     }
 }
-
